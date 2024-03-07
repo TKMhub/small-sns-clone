@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 
 const AuthButtonClient = ({ session }: { session: Session | null }) => {
   const ruoter = useRouter();
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient<Database>();
 
   const handleSingIn = async () => {
     await supabase.auth.signInWithOAuth({
