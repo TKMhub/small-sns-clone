@@ -14,7 +14,7 @@ export default async function Home() {
     redirect("/login");
   }
 
-  const { data: posts } = await supabase.from("Posts").select();
+  const { data: posts } = await supabase.from("posts").select();
 
   return (
     <>
