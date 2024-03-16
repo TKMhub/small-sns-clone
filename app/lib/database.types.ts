@@ -30,7 +30,7 @@ export type Database = {
         };
         Relationships: [
           {
-            foreignKeyName: "public_Posts_user_id_fkey";
+            foreignKeyName: "public_posts_user_id_fkey";
             columns: ["user_id"];
             isOneToOne: false;
             referencedRelation: "users";
