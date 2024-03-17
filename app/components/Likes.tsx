@@ -1,6 +1,7 @@
 "use client";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
+import { useTransition } from "react";
 
 export default function Likes({
   post,
@@ -9,6 +10,7 @@ export default function Likes({
   post: PostWithAuthor;
   addOptimisticPost: (newPost: PostWithAuthor) => void;
 }) {
+  const [isPending, startTransition] = useTransition();
   const router = useRouter;
   const handleClick = async () => {
     const supabase = createClientComponentClient();
@@ -38,5 +40,9 @@ export default function Likes({
       router.refresh();
     }
   };
-  return <button onClick={handleClick}>{post.likes.length}いいね</button>;
+  return (
+    <button onClick={() => startTransition(() => handleClick())}>
+      {post.likes.length}いいね
+    </button>
+  );
 }
